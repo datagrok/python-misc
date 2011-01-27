@@ -1,7 +1,13 @@
 # Miscellaneous Python modules
 
-This package collects several small scripts that do not yet warrant their own
-independent code repository. See pydoc for purpose and use of each.
+This package collects several small scripts of mine that do not yet warrant
+their own independent code repository. See pydoc for purpose and use of each.
+
+# TODO
+
+- Find a way to automatically present pydoc nicely. Explore [method used in dinoboff's github-tools][1].
+
+[1]: http://dinoboff.github.com/github-tools/overview.html#documentation-hosting
 
 ### Directory layout
 
