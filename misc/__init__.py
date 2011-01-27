@@ -1,12 +1,13 @@
 
-'''Mike's Python utilities
-Copyright 2010  Michael F. Lamb
+'''Miscellaneous Python scripts and utilities
 
 These are little code snippets I like to keep handy. Some are copied or
 modified from other people or books, some are original by me.
 
 They may be in various states of completion; some may be release quality, other
 may be incomplete, even as little as unfinished stubs of ideas.
+
+    Copyright 2010 Michael F. Lamb
 
     This program and the files distributed with it are free software: you
     can redistribute them and/or modify them under the terms of the GNU
