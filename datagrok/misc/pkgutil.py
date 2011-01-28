@@ -1,6 +1,7 @@
 
 '''Tools for working with python packages and modules'''
 
+from __future__ import absolute_import
 import sys
 
 class system_imports_only():
@@ -92,5 +93,10 @@ def standard_library_names():
 if __name__=='__main__':
     stdlibnames = list(standard_library_names())
     for name, doc in get_modules():
-        conflict = name in stdlibnames
-        print '    %-20s%1s %s' % (name, conflict and '*' or ' ', doc)
+        name = name.split('.')
+        basename = name.pop()
+        conflict = basename in stdlibnames
+        if name:
+            basename = '.%s' % basename
+        name = ''.join(['   ' for n in name]) + basename
+        print '    %-25s%1s %s' % (name, conflict and '*' or ' ', doc)

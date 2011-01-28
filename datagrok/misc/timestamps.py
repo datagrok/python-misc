@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import time
 
 def to_w3c(self, dts):

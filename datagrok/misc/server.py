@@ -11,6 +11,7 @@ them. Lately, I'm trying a different approach that does not employ MultiViews,
 so this may go without any updates for a long time.
 
 """
+from __future__ import absolute_import
 import os
 import SimpleHTTPServer
 

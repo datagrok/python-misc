@@ -17,8 +17,8 @@ the next version...
 
 """
 
-
 from __future__ import absolute_import
+
 try:
     import xml.dom.minidom
 except ImportError:

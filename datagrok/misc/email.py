@@ -1,5 +1,6 @@
 """Utilities for e-mail related things."""
 
+from __future__ import absolute_import
 from smtplib import SMTP
 from os import system
 

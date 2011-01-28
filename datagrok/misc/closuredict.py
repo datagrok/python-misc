@@ -10,7 +10,8 @@ solution.
 
 """
 
-from flatten import flatten
+from __future__ import absolute_import
+from datagrok.misc.flatten import flatten
 import sys
 
 #__all__ = ['FormatStringDict', 'LazyDict', 'LazyFormatStringDict']

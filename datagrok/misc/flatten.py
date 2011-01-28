@@ -82,6 +82,7 @@ that.
 
 """
 
+from __future__ import absolute_import
 from __future__ import generators
 
 # __all__=['flatten']

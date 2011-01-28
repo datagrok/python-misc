@@ -14,6 +14,7 @@ methods corresponding to various color spaces.
 
 """
 
+from __future__ import absolute_import
 import colorsys
 
 def HLSColor(hls):

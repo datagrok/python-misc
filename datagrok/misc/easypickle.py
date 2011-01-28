@@ -9,6 +9,7 @@ to use (like a shelf.)
 		d.data = "blah"
         d.close()						# close it
 """
+from __future__ import absolute_import
 import pickle
 import os
 

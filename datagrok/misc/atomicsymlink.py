@@ -2,6 +2,7 @@
 
 """Change the destination of a symlink as an atomic operation."""
 
+from __future__ import absolute_import
 import os
 
 

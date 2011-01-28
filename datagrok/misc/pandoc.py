@@ -1,5 +1,6 @@
 """Filter pandoc->html for use with e-mail clients like mutt."""
 
+from __future__ import absolute_import
 import subprocess
 import re
 

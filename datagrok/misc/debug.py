@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 
 if __debug__:
 	import sys

@@ -27,11 +27,12 @@ To do: support optional re-writing of arguments instead of passing them
 directly to validated executable.
 
 '''
-__author__ = 'Michael F. Lamb <mike@datagrok.org>'
-__date__ = 'Wed, 27 Feb 2008 03:12:54 -0400'
-
+from __future__ import absolute_import
 import os
 import re
+
+__author__ = 'Michael F. Lamb <mike@datagrok.org>'
+__date__ = 'Wed, 27 Feb 2008 03:12:54 -0400'
 
 
 def main(valid):

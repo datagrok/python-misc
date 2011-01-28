@@ -27,6 +27,8 @@ Michael F. Lamb <mike@datagrok.org>
 http://datagrok.org
 '''
 
+from __future__ import absolute_import
+
 __author__ = 'Michael F. Lamb <mike@datagrok.org>'
 __license__ = 'GNU AGPL v3'
 __date__ = '2005-04-07 07:59:18 -0400'

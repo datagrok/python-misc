@@ -138,6 +138,7 @@ searched in the order that they are presented.
 
 """
 
+from __future__ import absolute_import
 from collections import Mapping
 
 class TemplateStringHelper(Mapping):

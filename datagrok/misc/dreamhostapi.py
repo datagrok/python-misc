@@ -3,6 +3,7 @@ http://wiki.dreamhost.com/Application_programming_interface
 
 """
 
+from __future__ import absolute_import
 from xmlrpclib import ServerProxy, _Method
 from uuid import uuid1
 from os import environ
