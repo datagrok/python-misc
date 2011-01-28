@@ -140,5 +140,3 @@ def flatten_fastdictdef_callfuncs(iterable, get_iterbility=None):
                 yield subelem
 
 flatten = flatten_fastdictdef_callfuncs
-
-if __name__=="__main__": import doctest; doctest.testmod()

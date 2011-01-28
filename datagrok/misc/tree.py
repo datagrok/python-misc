@@ -474,8 +474,6 @@ class StringPathsTree(StringSplitMixin, TuplePathsMixin,
 	pass
 
 if __name__ == "__main__":
-	import doctest, datagrok
-	doctest.testmod(datagrok)
 	T = Tree()
 	T[[]]		 = "Example 0 (/)"
 	T[['a']]	 = "Example 1 (/a)"

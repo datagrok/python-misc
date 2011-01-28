@@ -40,6 +40,3 @@ def _euclid(u,v):
 	if u[2] == 1: return u
 	r = v[2]/u[2]
 	return _euclid([x - r*y for x,y in zip(v,u)], u)
-
-if __name__ == "__main__":
-	import doctest; doctest.testmod()

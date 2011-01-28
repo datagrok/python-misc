@@ -178,9 +178,7 @@ class FSTree(object):
         return self.children(self.parent(path))
 
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+#if __name__ == "__main__":
     #import shelve
     #s = shelve.open('/home/mike/tmp/siteblah.shelf')
     #x = Site(s)

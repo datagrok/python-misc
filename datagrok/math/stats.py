@@ -32,6 +32,3 @@ def _fsd(ns):
 	"Given a sorted list of integers ns, print a five-stem display."
 	for q in range(10*(min(ns)/10), 10*(max(ns)/10+1), 2):
 		print "%d|%s" % (q/10, ''.join([str(x % 10) for x in ns if x<q+2 and x>=q]))
-
-if __name__ == "__main__":
-	import doctest; doctest.testmod()

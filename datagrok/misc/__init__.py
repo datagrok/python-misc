@@ -93,12 +93,3 @@ def pv(seq, length=None):
 
     """
     pass
-
-
-def _test():
-    import doctest, datagrok
-    return doctest.testmod(datagrok)
-
-
-if __name__ == "__main__":
-    _test()

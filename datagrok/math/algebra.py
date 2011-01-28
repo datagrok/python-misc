@@ -35,7 +35,3 @@ def U_n_ord(n):
 				o.append(e+1)
 				break
 	return p, o
-
-
-if __name__ == "__main__":
-	import doctest; doctest.testmod()

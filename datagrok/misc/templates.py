@@ -229,13 +229,3 @@ class TemplateStringHelper(Mapping):
                 return getattr(ob, key)
             except:
                 return None
-
-
-
-def _test():
-    import doctest
-    return doctest.testmod()
-
-
-if __name__ == "__main__":
-    _test()

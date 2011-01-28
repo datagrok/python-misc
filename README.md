@@ -18,13 +18,14 @@ I keep my home directory in a git repository, and I like to structure my system 
 		lib/
 			python/
 				datagrok/
-					misc -> ~/var/submodules/python-misc/misc
+					__init__.py			Empty file
+					misc -> ~/var/submodules/python-misc/datagrok/misc
+					math -> ~/var/submodules/python-misc/datagrok/math
+					site -> ~/var/submodules/datagrok-site/datagrok/site (a different project that I also keep in the 'datagrok' package)
+					...
 		var/
 			submodules/
 				python-misc/	A clone of this repository
-					README.md
-					misc/
-						__init__.py
 
 I keep ~/lib/python in my $PYTHONPATH, so whenever I need a utility script I can say for example:
 

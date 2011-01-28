@@ -93,8 +93,3 @@ def pipeline(*callables):
     callables = list(callables)
     callables.reverse()
     return compose(*callables)
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

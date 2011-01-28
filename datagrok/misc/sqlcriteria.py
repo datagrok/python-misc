@@ -43,6 +43,3 @@ class Criteria(object):
         return self
     def __str__(self):
         return self.criteria
-
-if __name__=="__main__":
-    import doctest; doctest.testmod()
