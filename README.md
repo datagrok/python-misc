@@ -1,9 +1,10 @@
 # Miscellaneous Python modules
 
-This package collects several small scripts of mine that do not yet warrant
-their own independent code repository. See pydoc for purpose and use of each.
+This package collects several small scripts of mine that do not yet warrant their own independent code repository. See pydoc for purpose and use of each.
 
 # TODO
+
+- **Create dev branch, remove broken scripts from master.** Various of these scripts are in an incomplete state, since prior to now they have lived in a mostly-private subversion repository (where branching and merging requires more thinking). Now that these are on GitHub and elsewhere, re-examine all scripts, and put only those that are working, pass tests, and might be useful to others in master branch; I'll keep my work-in-progress in a development branch.
 
 - Find a way to automatically present pydoc nicely. Explore [method used in dinoboff's github-tools][1].
 
