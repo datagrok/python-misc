@@ -15,7 +15,7 @@ def U(n):
 	"""The group of units of integers modulo n. This is
 	U(n), all x in Z_n such that x relatively prime to
 	n."""
-	return [x for x in range(n) if relprmx(x, n)]
+	return [x for x in range(n) if rprime(x, n)]
 
 def U_n_ord(n):
 	"""List of tuples (x, n_x) of U(n) with the order of

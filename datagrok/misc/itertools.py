@@ -63,11 +63,12 @@ def dotproduct(vec1, vec2):
     return sum(imap(operator.mul, vec1, vec2))
 
 def flatten(iterable_of_lists):
-    "Flatten one level of nesting.
+    '''Flatten one level of nesting.
     
     See datagrok.flatten for a recursive, featureful, efficient iterator
     flattener.
-    "
+    
+    '''
     return chain.from_iterable(iterable_of_lists)
 
 def repeatfunc(func, times=None, *args):
