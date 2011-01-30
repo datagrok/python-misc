@@ -1,6 +1,7 @@
-"""Manages a unix-filesystem-like heiarchy of objects. Backed by a string-keyed
-dict, so you may persist using anydbm (if using string values) or shelve (for
-object values).
+'''Manages a unix-filesystem-like heiarchy of objects.
+
+Backed by a string-keyed dict, so you may persist using anydbm (if using string
+values) or shelve (for object values).
 
     >>> x = FSTree()
 
@@ -64,7 +65,7 @@ Leading, trailing, and gratuitous inner separators are normalized:
         '':                  None
         'a':                 'blah'
 
-"""
+'''
 
 class FSTree(object):
 
@@ -131,10 +132,10 @@ class FSTree(object):
     __repr__ = repr_keylist
 
     def children(self, path):
-        """Return an iterable of paths of children of the specified path.
+        '''Return an iterable of paths of children of the specified path.
 
         This is currently NOT efficient, order of O(n), scanning the entire
-        tree on each call."""
+        tree on each call.'''
         path = self.norm_path(path)
         #XXX FIXME not efficient
         valid_child = lambda x: x.startswith(path) \
@@ -146,31 +147,31 @@ class FSTree(object):
                 yield k
 
     def children_items(self, path):
-        """Return an iterable of children (path, value) of the specified path.
-        O(n)."""
+        '''Return an iterable of children (path, value) of the specified path.
+        O(n).'''
         for c in self.children(path):
             yield (c, self.tree.get(c))
 
     def parent(self, path):
-        """Return the path of immediate parent of given path, neither of which
-        need exist."""
+        '''Return the path of immediate parent of given path, neither of which
+        need exist.'''
         path = self.norm_path(path)
         path = path.split('/')
         return '/'.join(path[:-1])
 
     def parents(self, path):
-        """Return an iterable of paths of parents up to and including the given
-        path, none of which need exist."""
+        '''Return an iterable of paths of parents up to and including the given
+        path, none of which need exist.'''
         path = self.norm_path(path)
         path = [p for p in path.split('/') if p]
         for p in range(len(path)+1):
             yield '/'.join(path[:p])
 
     def parents_items(self, path):
-        """Return an iterable of parents (path, value) of the specified path.
+        '''Return an iterable of parents (path, value) of the specified path.
 
         This may yield some ancestors successfully before raising an exception
-        for a non-existent path."""
+        for a non-existent path.'''
         for p in self.parents(path):
             yield (p, self.tree.get(p))
 

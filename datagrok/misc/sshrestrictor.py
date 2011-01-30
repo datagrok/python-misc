@@ -1,8 +1,10 @@
 #!/usr/bin/python
 
-'''A restricted environment to allow users to execute commands by way of ssh,
-restricted by their public key. Enable by making this the target of the
-command="..." argument in .ssh/authorized_keys for the key to be restricted.
+'''Limit ssh users to a restricted set of commands.
+
+Installation: Make a script that executes run() this the target of the
+command="..." argument in .ssh/authorized_keys, for the key to be restricted.
+
 Example:
 
     in .ssh/sendmail_or_sleep.py:
@@ -23,9 +25,6 @@ Example:
 
         command="~/.ssh/sendmail_or_sleep.py" ssh-rsa AAAAB3za...LiPk== user@example.net
 
-To do: support optional re-writing of arguments instead of passing them
-directly to validated executable.
-
 '''
 from __future__ import absolute_import
 import os
@@ -34,6 +33,8 @@ import re
 __author__ = 'Michael F. Lamb <mike@datagrok.org>'
 __date__ = 'Wed, 27 Feb 2008 03:12:54 -0400'
 
+# TODO: support optional validation and/or re-writing of arguments instead of
+# passing them directly to executable.
 
 def main(valid):
     """Match requested command against list of patterns, first to match is

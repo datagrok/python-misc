@@ -1,11 +1,6 @@
-#!/usr/bin/python
+'''A unioned view of multiple wrapped mapping objects.'''
 
-"""A mapping type which presents a unioned view of multiple other mapping
-objects.
-
-"""
 from __future__ import absolute_import
-
 from UserDict import DictMixin
 
 # TODO: templates.TemplateStringHelper does something similar, try to decouple.
@@ -17,7 +12,7 @@ from UserDict import DictMixin
 # collections.MutableMapping instead of DictMixin."
 
 class MappingUnion(DictMixin):
-    """A mapping object which presents a unioned view of multiple other mapping
+    '''A mapping object which presents a unioned view of multiple other mapping
     objects.
 
     To oversimplify, one might say that a MappingUnion is to a sequence of
@@ -28,7 +23,7 @@ class MappingUnion(DictMixin):
     together. So, I have a dict mapping paths to content objects, a dict-like
     object mapping date-like paths to content retrieved from a database, etc.
 
-    """
+    '''
 
     dicts = []
 

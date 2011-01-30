@@ -1,4 +1,3 @@
-
 '''Tools for working with python packages and modules.
 
     Warning: this module overlaps the name of a module in the Python standard

@@ -1,5 +1,4 @@
-
-'''An idea for a DSL implemented in Python for lazily constructing SQL queries.
+'''An idea for a Python DSL for lazily constructing SQL queries.
 
     >>> e = CriteriaHaving()
     >>> print (e.kind == 'person') * (e.id > 100) * (e.id < 1000) * (e.color != 'blue')

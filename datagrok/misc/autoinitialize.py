@@ -1,5 +1,4 @@
-'''A mixin that causes an object to automatically populate instance attributes
-according to the keywords passed to its constructor.
+'''Mixin that auto-populates instance attributes.
 
     >>> class Foo(AutoInitialize):
     ...     pass
@@ -35,7 +34,6 @@ according to the keywords passed to its constructor.
     TypeError: 'Blah' does not take 'd' as an argument.
 
 '''
-
 from __future__ import absolute_import
 import sys
 

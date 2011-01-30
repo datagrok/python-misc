@@ -1,4 +1,3 @@
-
 '''Miscellaneous Python scripts and utilities
 
 These are little code snippets I like to keep handy. Some are copied or
@@ -25,8 +24,8 @@ may be incomplete, even as little as unfinished stubs of ideas.
 
 Michael F. Lamb <mike@datagrok.org>
 http://datagrok.org
-'''
 
+'''
 from __future__ import absolute_import
 
 __author__ = 'Michael F. Lamb <mike@datagrok.org>'

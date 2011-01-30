@@ -1,4 +1,4 @@
-'''Snippets from Linear Algebra class'''
+'''Snippets from linear algebra class'''
 
 from numpy import dot, array, sqrt, matrix
 

@@ -1,25 +1,24 @@
-"""Utilities for e-mail related things.
+'''Utilities for e-mail related things.
 
     Warning: this module overlaps the name of a module in the Python standard
     library. If you're a sensible and pragmatic developer who obeys the
     recommendations in the Python documentation, you may wish to rename this
     module before use.
 
-"""
-
+'''
 from __future__ import absolute_import
 from smtplib import SMTP
 from os import system
 
 class TunneledSMTP(SMTP):
-    """An SMTP client (like smtplib.SMTP) that opens and employs an SSH tunnel
+    '''An SMTP client (like smtplib.SMTP) that opens and employs an SSH tunnel
     to the mailserver by way of another server. The local port for the tunnel
     is always localhost:2525.
 
-    """
+    '''
 
     def __init__(self, tunnelhost, host='', port=0, local_hostname=None):
-        """Initialize a new instance.
+        '''Initialize a new instance.
 
         tunnelhost:
             The server to SSH through. SSH must be configured for passwordless
@@ -34,13 +33,13 @@ class TunneledSMTP(SMTP):
         An SMTPConnectError is raised if the specified mail host doesn't
         respond correctly.
 
-        """
+        '''
         self.tunnelhost = tunnelhost
         SMTP.__init__(self, host=host, port=port,
                               local_hostname=local_hostname)
 
     def connect(self, host, port):
-        """Connect to a mail host on a given port, by tunneling through the SSH
+        '''Connect to a mail host on a given port, by tunneling through the SSH
         server configured on instantiation.
 
         If the hostname ends with a colon (`:') followed by a number, and
@@ -50,7 +49,7 @@ class TunneledSMTP(SMTP):
         Note: This method is automatically invoked by __init__, if a mailhost
         is specified during instantiation.
 
-        """
+        '''
         # Taken from smtplib.py and modified.
         if not port and (host.find(':') == host.rfind(':')):
             i = host.rfind(':')

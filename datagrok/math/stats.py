@@ -1,21 +1,21 @@
-"""Utilities for statistics"""
+'''Utilities for statistics'''
 
 def sorted(xs):
-	"""Return a sorted copy of the list xs"""
+	'''Return a sorted copy of the list xs'''
 	_xs = list(xs)
 	_xs.sort()
 	return _xs
 
 def stemleaf(ns):
-	"""Given a list of integers ns, print a stem-and-leaf display."""
+	'''Given a list of integers ns, print a stem-and-leaf display.'''
 	return _stemleaf(sorted(ns))
 
 def dsd(ns):
-	"""Given a list of integers ns, print a double-stem display."""
+	'''Given a list of integers ns, print a double-stem display.'''
 	return _dsd(sorted(ns))
 
 def fsd(ns):
-	"""Given a list of integers ns, print a five-stem display."""
+	'''Given a list of integers ns, print a five-stem display.'''
 	return _fsd(sorted(ns))
 
 def _stemleaf(ns):

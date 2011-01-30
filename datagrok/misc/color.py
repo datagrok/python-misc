@@ -1,6 +1,4 @@
-
-"""
-Object-oriented color manipulation
+'''Object-oriented color manipulation
 
 A Color object holds information about a color, which may be accessed through
 methods corresponding to various color spaces.
@@ -11,9 +9,7 @@ methods corresponding to various color spaces.
 >>> x.hls
 (0.0, 0.5, 1.0)
 
-
-"""
-
+'''
 from __future__ import absolute_import
 import colorsys
 
@@ -27,8 +23,8 @@ def HTMLColor(html):
 	return Color(html=html)
 
 class Color(object):
-	"""A color, represented internally by floating-point
-	(colorsys-compatable) rgb values."""
+	'''A color, represented internally by floating-point
+	(colorsys-compatable) rgb values.'''
 	def __init__(self, rgb=None, hls=None, hsv=None, html=None):
 		if rgb:		self.set_rgb(rgb)
 		elif hls:	self.set_hls(hls)

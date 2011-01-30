@@ -49,7 +49,7 @@ gracefully.
 # that contains mutable values.
 
 def inverseDict(d):
-    """Thinking of dict d as a function that maps a -> b, this function produces
+    '''Thinking of dict d as a function that maps a -> b, this function produces
     a new dict that maps b -> a.
     
     We deal with non-injective dicts by mapping multi-valued elements to a list
@@ -64,7 +64,7 @@ def inverseDict(d):
     >>> inverseDict(d)
     {1: ['a'], 2: ['b'], 3: ['c']}
 
-    """
+    '''
     d_ = {}
     for k, v in d.items():
         d_.setdefault(v, []).append(k)
