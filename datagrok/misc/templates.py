@@ -101,7 +101,7 @@ attribute dictionary.
     ...     'a number': 3.14159,
     ...     'a callable line generator': lambda: ('line %d' % x for x in range(1,4)),
     ... }
-    >>> print '''
+    >>> print """
     ... %(a string)s
     ... %(a no-argument function)s
     ... %(a number)s
@@ -110,7 +110,7 @@ attribute dictionary.
     ... %(a callable line generator)s
     ... %(__class__)s
     ... %(__len__)04x
-    ... '''.strip() % TSH(a_dict)
+    ... """.strip() % TSH(a_dict)
     here is a string from a_dict
     a string from a callable
     3.14159
@@ -129,10 +129,10 @@ searched in the order that they are presented.
     ...     'a string': 'a string from second dict',
     ...     'another string': 'another string from second dict',
     ... }
-    >>> print '''
+    >>> print """
     ... %(a string)s
     ... %(another string)s
-    ... '''.strip() % TSH(a_dict, b_dict)
+    ... """.strip() % TSH(a_dict, b_dict)
     here is a string from a_dict
     another string from second dict
 
