@@ -1,5 +1,9 @@
 """Tools for working with iterators.
 
+    Warning: this module overlaps the name of a built-in module. If you're a
+    sensible and pragmatic developer who obeys the recommendations in the
+    Python documentation, you may wish to rename this module before use.
+
 Many of these have been taken from or inspired by the documentation for the
 builtin itertools module. See http://docs.python.org/library/itertools.html
 

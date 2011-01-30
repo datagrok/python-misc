@@ -97,6 +97,8 @@ def standard_library_names():
     with system_imports_only():
         for module_loader, name, ispkg in pkgutil.iter_modules():
             yield name
+        # this is a builtin. How do I retrieve it and others programmatically?
+        yield 'itertools'
 
 
 def module_list():
