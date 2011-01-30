@@ -1,4 +1,11 @@
-"""Utilities for e-mail related things."""
+"""Utilities for e-mail related things.
+
+    Warning: this module overlaps the name of a module in the Python standard
+    library. If you're a sensible and pragmatic developer who obeys the
+    recommendations in the Python documentation, you may wish to rename this
+    module before use.
+
+"""
 
 from __future__ import absolute_import
 from smtplib import SMTP

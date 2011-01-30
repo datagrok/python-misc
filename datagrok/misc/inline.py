@@ -30,7 +30,7 @@ takes an input and an optional output filehandle. Simple use:
 
 or:
 
-    >>> open('output.html', 'w').write(inline(open('file_to_parse.pyhtml')).read())
+    open('output.html', 'w').write(inline(open('file_to_parse.pyhtml')).read())
 
 """
 

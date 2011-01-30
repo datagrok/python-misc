@@ -1,5 +1,12 @@
 
-'''Tools for working with python packages and modules'''
+'''Tools for working with python packages and modules.
+
+    Warning: this module overlaps the name of a module in the Python standard
+    library. If you're a sensible and pragmatic developer who obeys the
+    recommendations in the Python documentation, you may wish to rename this
+    module before use.
+
+'''
 
 from __future__ import absolute_import
 import sys
@@ -25,6 +32,9 @@ class system_imports_only():
           
         - Also, if your current directory contains a misbehaving module, remove
           '' from sys.path.
+
+        - Don't run 'python -m doctest path/to/filename.py'; instead run
+          'python -m datagrok.misc.doctest path/to/filename.py'
 
     If you do those things you shouldn't need this class.
 
@@ -90,7 +100,7 @@ def standard_library_names():
             yield name
 
 
-if __name__=='__main__':
+def module_list():
     stdlibnames = list(standard_library_names())
     for name, doc in get_modules():
         name = name.split('.')
@@ -100,3 +110,7 @@ if __name__=='__main__':
             basename = '.%s' % basename
         name = ''.join(['   ' for n in name]) + basename
         print '    %-25s%1s %s' % (name, conflict and '*' or ' ', doc)
+
+
+if __name__=='__main__':
+    module_list()

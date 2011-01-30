@@ -1,11 +1,14 @@
-#!/bin/python
-
 """Utilities for working with XML.
+
+    Warning: this module overlaps the name of a module in the Python standard
+    library. If you're a sensible and pragmatic developer who obeys the
+    recommendations in the Python documentation, you may wish to rename this
+    module before use.
 
 XML is crap. Wow, I hate XML.
 
-This lets you build your XML crap from a structure made of tuples, lists, and
-dicts.
+builder() lets you build your XML crap from a structure made of tuples, lists,
+and dicts.
 
 But really, why are you using XML in the first place?
 
@@ -18,16 +21,7 @@ the next version...
 """
 
 from __future__ import absolute_import
-
-try:
-    import xml.dom.minidom
-except ImportError:
-    # When running with '.' in PYTHONPATH, not even absolute_import can save
-    # us.
-    import sys
-    local = sys.path.pop(0)
-    import xml.dom.minidom
-    sys.path.insert(0, local)
+import xml.dom.minidom
 
 def builder(tree):
     """Converts a tree structure constructed from intrinsic types (tuples,

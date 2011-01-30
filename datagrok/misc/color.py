@@ -5,9 +5,9 @@ Object-oriented color manipulation
 A Color object holds information about a color, which may be accessed through
 methods corresponding to various color spaces.
 
->>> x=Color("#ff0000") # red
+>>> x=Color(html="#ff0000") # red
 >>> x.rgb
-[1.0, 0.0, 0.0]
+(1.0, 0.0, 0.0)
 >>> x.hls
 (0.0, 0.5, 1.0)
 

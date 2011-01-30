@@ -54,7 +54,7 @@ If the format string references a callable, it will be called, except for
 __class__.
 
     >>> '%(a_method)s, %(__class__)s' % TSH(o)
-    "baz, <class '__main__.example'>"
+    "baz, <class 'datagrok.misc.templates.example'>"
 
 If the format string references any iterable other than a string object, it
 will be newline-joined. This enables the pattern of using 'yield' as one would

@@ -2,7 +2,7 @@
 default: test
 
 test:
-	python -m doctest datagrok/*/*.py
+	python -m datagrok.misc.doctest
 
 clean:
 	find -name '*.pyc' -delete
