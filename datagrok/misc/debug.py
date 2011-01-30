@@ -20,7 +20,7 @@ When launched with python -O, this will print nothing.
 
 If you wish to call a particular function only when debugging:
 
-    d_apply(myfunc, arg, arg, keyword=value)
+    assert myfunc()
 
 '''
 from __future__ import absolute_import
@@ -55,8 +55,11 @@ d_print.__doc__ = (
     ''')
 
 d_apply.__doc__ = ( 
-    '''Calls fn with any additional arguments as parameters, but only when
-    python is launched without -O. Also prints a note stating that the call is
-    taking place.
-    
+    '''Deprecated. Calls fn with any additional arguments as parameters, but
+    only when python is launched without -O. Also prints a note stating that
+    the call is taking place.
+
+    n.b. I don't remember for what purpose I created this, but I now feel it is
+    redundant; one may simply use assert blah() instead.
+
     ''')
