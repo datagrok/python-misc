@@ -13,8 +13,8 @@ I'm trying to take advantage of this feature in all my code. This lets me:
 
 Let's say you want to put some debugging statements in your code:
 
-    from datagrok.misc.debug import d_print, d_apply
-    d_print('This code is running in debug mode.')
+    from datagrok.misc.debug import debug, d_apply
+    debug('This code is running in debug mode.')
 
 When launched with python -O, this will print nothing.
 
@@ -30,36 +30,54 @@ from __future__ import absolute_import
 
 
 if __debug__:
-	import sys
+    import sys
 
-	def d_print(msg):
-		print >> sys.stderr, msg
+    def debug(msg):
+        print >> sys.stderr, msg
 
-	def d_apply(fn, *args, **kw):
-		d_print('Calling: %s(%s, %s)' % (
-			fn.__name__,
-			', '.join([repr(x) for x in args]),
-			', '.join(["%s=%s" % (k, repr(v)) for (k, v) in kw])))
-		d_print(fn(*args, **kw))
+    def d_apply(fn, *args, **kw):
+        debug('Calling: %s(%s, %s)' % (
+            fn.__name__,
+            ', '.join([repr(x) for x in args]),
+            ', '.join(["%s=%s" % (k, repr(v)) for (k, v) in kw])))
+        debug(fn(*args, **kw))
+
+    def printcalls(fn):
+        def _notify_fn(*args, **kw):
+            debug('calling %s(%s, %s)' % (fn.__name__, repr(args), repr(kw)))
+            return fn(*args, **kw)
+        _notify_fn.__doc__ = fn.__doc__ + '\n\nThis function prints a note when called.'
+        return _notify_fn
 
 else:
-	def d_print(msg):
-		pass
+    def debug(msg):
+        pass
 
-	def d_apply(fn, *args, **kw):
-		pass
+    def d_apply(fn, *args, **kw):
+        pass
+
+    def printcalls(fn):
+        return fn
 
 
-d_print.__doc__ = (
+debug.__doc__ = (
     '''Prints msg to standard error only when python is launched without -O.
     ''')
 
-d_apply.__doc__ = ( 
+d_apply.__doc__ = (
     '''Deprecated. Calls fn with any additional arguments as parameters, but
     only when python is launched without -O. Also prints a note stating that
     the call is taking place.
 
     n.b. I don't remember for what purpose I created this, but I now feel it is
     redundant; one may simply use assert blah() instead.
+
+    ''')
+
+printcalls.__doc__ = (
+    '''A decorator that prints a note to standard error when its decorated
+    function is called, but only when __debug__ is true.
+
+    For a more robust solution, see 'trace' in the standard library.
 
     ''')

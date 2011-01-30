@@ -33,36 +33,14 @@ __author__ = 'Michael F. Lamb <mike@datagrok.org>'
 __license__ = 'GNU AGPL v3'
 __date__ = '2005-04-07 07:59:18 -0400'
 
-def lin(p1, p2):
-    """Return the linear function of the line intersecting two points.
-    
-    Example:
-    >>> melt = (0, 32)
-    >>> boil = (100, 212)
-    >>> celsius_to_farenheit = lin(melt, boil)
-    >>> celsius_to_farenheit(10)
-    50
-    """
-    (x1,y1) = p1
-    (x2,y2) = p2
-    return lambda x: (x-x1)*(y2-y1)/(x2-x1)+y1
-
-
-def ran(r1, r2):
-    """Return the function mapping range r1 to range r2.
-
-    Example:
-    >>> cels_range = (0,100)
-    >>> farn_range = (32,212)
-    >>> celsius_to_farenheit = ran(cels_range, farn_range)
-    >>> celsius_to_farenheit(10)
-    50
-    """
-    return lin((r1[0],r2[0]),(r1[1],r2[1]))
-
 
 def memoized(fn):
-    """A memoizing decorator."""
+    '''A memoizing decorator.
+    
+    Note: Python 3.2 includes a possibly more robust 'functools.lrucache'.
+
+    '''
+    # TODO: create my own 'functools' and move this there?
     results = {}
     def _memoized_fn(*args):
         if args not in results:
@@ -71,17 +49,7 @@ def memoized(fn):
     _memoized_fn.__doc__ = fn.__doc__.replace('Returns', 'A memoization of', 1)
     return _memoized_fn
 
-
-def notifying(fn):
-    """A decorator that prints a note when called."""
-    import sys
-    def _notify_fn(*args, **kw):
-        print >>sys.stderr, 'calling %s(%s, %s)' % (fn.__name__, repr(args), repr(kw))
-        return fn(*args, **kw)
-    _notify_fn.__doc__ = fn.__doc__ + '\n\nThis function prints a note when called.'
-    return _notify_fn
-
-
+# FIXME: does this belong in 'itertools'?
 def pv(seq, length=None):
     """NEEDS IMPLEMENTATION
     
