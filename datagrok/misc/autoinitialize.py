@@ -39,27 +39,38 @@ import sys
 
 
 class AutoInitialize(object):
+    '''This mixin auto-populates its instance attributes based on the arguments
+    passed to its constructor.
+    
+    '''
     def __init__(self, **kw):
         self.__dict__.update(locals())
-        del self.self
+        del self.__dict__['self']
         self.__dict__.update(kw)
 
 
 class AutoInitializeSlots(object):
-    __slots__=[]
+    '''This mixin auto-populates its instance attribute slots based on the
+    arguments passed to its constructor. Argument keys must match __slots__
+    attribute.
+    
+    '''
+    __slots__ = []
     def __init__(self, *args, **kw):
         if len(args) > len(self.__slots__):
-            raise TypeError, "%s takes exactly %s arguments" % (__name__, len(self.__slots__)), sys.exc_info()[2]
+            raise TypeError, "%s takes exactly %s arguments" % (
+                __name__, len(self.__slots__)), sys.exc_info()[2]
         for key, value in zip(self.__slots__, args):
             setattr(self, key, value)
-        try:
-            for key in kw:
+        for key in kw:
+            try:
                 setattr(self, key, kw[key])
-        except AttributeError:
-            raise TypeError, "%s does not take %s as an argument." % (repr(self.__class__.__name__), repr(key)), sys.exc_info()[2]
+            except AttributeError:
+                raise TypeError, "%s does not take %s as an argument." % (
+                    repr(self.__class__.__name__), repr(key)), sys.exc_info()[2]
 
     def __str__(self):
         return '%s(%s)' % (self.__class__.__name__,
-                ', '.join(["%s=%s" % (k, getattr(self, k))\
-                    for k in self.__slots__ \
+                ', '.join(["%s=%s" % (k, getattr(self, k))
+                    for k in self.__slots__
                     if getattr(self, k, None)]))
