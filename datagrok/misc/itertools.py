@@ -14,6 +14,10 @@ These have been removed:
 
 """
 
+from __future__ import absolute_import
+from itertools import islice, imap, count
+import collections
+
 # For employing "yield" for a similar purpose as "print"
 
 def withnewlines(iterable):
@@ -131,7 +135,9 @@ def unique_everseen(iterable, key=None):
                 yield element
 
 def unique_justseen(iterable, key=None):
-    "List unique elements, preserving order. Remember only the element just seen."
+    """List unique elements, preserving order. Remember only the element just
+    seen.
+    """
     # unique_justseen('AAAABBBCCDAABBB') --> A B C D A B
     # unique_justseen('ABBCcAD', str.lower) --> A B C A D
     return imap(next, imap(itemgetter(1), groupby(iterable, key)))
