@@ -21,7 +21,7 @@ class system_imports_only():
 
     The obvious, easy, practical solution, which is recommended by the python
     documentation, is to rename my own package to not conflict with the
-    standard library. But that offends my sense of asthetics. What good are
+    standard library. But that offends my sense of aesthetics. What good are
     namespaces if I still have to avoid naming conflicts?
 
     If you insist on eschewing the recommendation like I do, just:
@@ -42,7 +42,7 @@ class system_imports_only():
     the standard library, you can see a demonstration of this function in use
     in the source code of this module.
 
-    It's still just a hack unsuitable for anything that is inteded for
+    It's still just a hack unsuitable for anything that is intended for
     packaging and distribution. It assumes that your stdlib-overlapping module
     does not live within /usr/lib as the python standard library does.
     
@@ -78,7 +78,7 @@ with system_imports_only():
 
 
 def get_modules():
-    '''In progess. A wrapper around pkgutil.walk_packages to find packages and
+    '''In progress. A wrapper around pkgutil.walk_packages to find packages and
     modules and return their name and first line of docstring.
     
     '''
