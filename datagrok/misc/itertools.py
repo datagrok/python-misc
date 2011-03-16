@@ -28,6 +28,42 @@ def genfile(filename, iterable):
     """Write each item in iterable as a line to file specified by filename"""
     open(filename, 'w').writelines(withnewlines(iterable))
 
+def showprogress(iterable, call, every=1, total=None):
+    """Periodically call a function while iterating.
+
+    Useful for e.g. displaying progress information.
+
+    The function is of the form: call(current, total, item) where current is
+    the current number of objects processed, total is the total number to
+    process, and item is the item for that iteration through the loop.
+
+    >>> def progress(current, total, item):
+    ...     print '%d of %d complete. (%3.1f%%)' % (x, t, x * 100. / t)
+    ...
+    >>> def heavylifting(arg):
+    ...     #time.sleep(1)
+    ...     return arg * .1234
+    ...
+    >>> s = 0
+    >>> for x in range(1000):
+    ...     s = s + heavylifting(x)
+    >>> s = 0
+    >>> for x in showprogress(range(1000), call=progress, every=50):
+    ...     s = s + heavylifting(x)
+    ...
+
+    # TODO: this doctest should be failing; why isn't it?
+    """
+    if total is None:
+        try:
+            total = len(iterable)
+        except TypeError:
+            pass
+    for n, item in enumerate(iterable):
+        yield item
+        if n % every == 0 or (total and n == total - 1):
+            call(n+1, total, item)
+
 # Verbatim from itertools docs. http://docs.python.org/library/itertools.html
 
 def take(n, iterable):
