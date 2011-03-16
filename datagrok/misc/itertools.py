@@ -108,10 +108,10 @@ def dotproduct(vec1, vec2):
 
 def flatten(iterable_of_lists):
     '''Flatten one level of nesting.
-    
+
     See datagrok.flatten for a recursive, featureful, efficient iterator
     flattener.
-    
+
     '''
     return chain.from_iterable(iterable_of_lists)
 
@@ -230,7 +230,7 @@ def random_combination_with_replacement(iterable, r):
 
 
 def window(seq, n=2):
-    """Returns a sliding window (of width n) over data from the iterable 
+    """Returns a sliding window (of width n) over data from the iterable
     s -> (s0,s1,...s[n-1]), (s1,s2,...,sn), ... """
     it = iter(seq)
     result = tuple(islice(it, n))
