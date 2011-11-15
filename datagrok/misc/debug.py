@@ -81,3 +81,28 @@ printcalls.__doc__ = (
     For a more robust solution, see 'trace' in the standard library.
 
     ''')
+
+def pdb_on_exception():
+    import sys
+    def pdb_excepthook(type, value, tb):
+        # From TZOTZIOY, http://stackoverflow.com/questions/242485/starting-python-debugger-automatically-on-error/242531#242531
+        if hasattr(sys, 'ps1') or not sys.stderr.isatty():
+        # we are in interactive mode or we don't have a tty-like device, so we
+        # call the default hook
+            sys.__excepthook__(type, value, tb)
+        else:
+            import traceback, pdb
+            # we are NOT in interactive mode, print the exception...
+            traceback.print_exception(type, value, tb)
+            print
+            pdb.post_mortem(tb) # more "modern"
+    sys.excepthook = pdb_excepthook
+
+def repl():
+    import code; code.interact(local=locals())
+
+def ipython():
+    from IPython import Shell; Shell.IPShellEmbed(argv=['-noconfirm_exit'])()
+
+def pdb():
+    import pdb; pdb.set_trace()
