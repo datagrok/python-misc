@@ -47,18 +47,3 @@ def memoized(fn):
         return results[args]
     _memoized_fn.__doc__ = fn.__doc__.replace('Returns', 'A memoization of', 1)
     return _memoized_fn
-
-# FIXME: does this belong in 'itertools'?
-def pv(seq, length=None):
-    """NEEDS IMPLEMENTATION
-    
-    Creates a status bar like 'pv' for the passed iterable. Assumes
-    sys.stdout is attached to a terminal that can interpret escapes.
-    
-    If your iterable has no __len__ but you know its length, you can pass it as
-    the second argument.
-
-    total time [ rate ] [=====> ] pct% ETA time-remain
-
-    """
-    pass

@@ -20,7 +20,6 @@ from operator import add
 import collections
 
 # For employing "yield" for a similar purpose as "print"
-
 def withnewlines(iterable):
     """Convert each item in iterable to a string with newline"""
     return ('%s\n' % i for i in iterable)
@@ -70,13 +69,48 @@ def periodically(iterable, callback, every=1, total=None):
     through the elements. If 'total' is None and an iterable with no __len__ is
     passed and 'every' is a percentage string, 'every' will fall back to '1'.
 
+    If you don't know if your iterable will have a '__len__' and you can't pass
+    a 'total' argument, you may instead provide a pair of callbacks as a tuple
+    to the 'callback' argument: the first will be used if there is a total,
+    the second otherwise. Example:
+
+    >>> callbacks=(
+    ...     # Display a percentage when the total is available,
+    ...     lambda c, t, i: sys.stderr.write('%d%% complete\n' % (c*100/t)),
+    ...     # Display the count if the total is unknown.
+    ...     lambda c, t, i: sys.stderr.write('%d items complete\n' % c))
+    ...
+    >>> for x in periodically(range(76543), callbacks, every=10000):
+    ...     pass
+    13% complete
+    26% complete
+    39% complete
+    52% complete
+    65% complete
+    78% complete
+    91% complete
+    100% complete
+
+    >>> for x in periodically(iter(xrange(76543)), callbacks, every=10000):
+    ...     pass
+    10000 items complete
+    20000 items complete
+    30000 items complete
+    40000 items complete
+    50000 items complete
+    60000 items complete
+    70000 items complete
+
     """
     if total is None:
         try:
             total = len(iterable)
         except TypeError:
             # This is an iterator without a __len__; leave total = None
-            pass
+            total = None
+
+    if isinstance(callback, tuple):
+        callback = callback[0 if total else 1]
 
     if isinstance(every, str) and every.endswith('%'):
         if total:
@@ -84,8 +118,7 @@ def periodically(iterable, callback, every=1, total=None):
         else:
             every = 1
 
-    for index, item in enumerate(iterable):
-        n = index + 1
+    for n, item in enumerate(iterable, start=1):
         yield item
         if n % every == 0 or (total and n == total):
             callback(n, total, item)
