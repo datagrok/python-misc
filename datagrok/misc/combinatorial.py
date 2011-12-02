@@ -45,7 +45,7 @@ def each(*fns):
     [5, 6, 7]
 
     '''
-    return lambda *args: ((fn(*args) for fn in fns))
+    return lambda *args: (fn(*args) for fn in fns)
 
 
 def any(*fns):
