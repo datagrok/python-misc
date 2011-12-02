@@ -36,7 +36,7 @@ def accumulate(iterable, key_func=lambda x:x, op=add):
     calling key_func with the current item passed as an argument.
 
     # get a running total along with the current item
-    >>> list(accumulate(range(7)))
+    >>> list(accumulate(range(8)))
     [(0, 0), (1, 1), (3, 2), (6, 3), (10, 4), (15, 5), (21, 6), (28, 7)]
 
     # generate chunks of a string given chunk sizes
@@ -74,11 +74,15 @@ def periodically(iterable, callback, every=1, total=None):
     to the 'callback' argument: the first will be used if there is a total,
     the second otherwise. Example:
 
+    >>> import sys
+    >>> def log(s):
+    ...    print s
+
     >>> callbacks=(
     ...     # Display a percentage when the total is available,
-    ...     lambda c, t, i: sys.stderr.write('%d%% complete\n' % (c*100/t)),
+    ...     lambda c, t, i: log('%d%% complete' % (c*100/t)),
     ...     # Display the count if the total is unknown.
-    ...     lambda c, t, i: sys.stderr.write('%d items complete\n' % c))
+    ...     lambda c, t, i: log('%d items complete' % c))
     ...
     >>> for x in periodically(range(76543), callbacks, every=10000):
     ...     pass
