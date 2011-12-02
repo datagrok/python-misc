@@ -16,6 +16,7 @@ These have been removed:
 
 from __future__ import absolute_import
 from itertools import islice, imap, count
+from operator import add
 import collections
 
 # For employing "yield" for a similar purpose as "print"
@@ -28,7 +29,33 @@ def genfile(filename, iterable):
     """Write each item in iterable as a line to file specified by filename"""
     open(filename, 'w').writelines(withnewlines(iterable))
 
-def showprogress(iterable, callback=None, every=1, total=None):
+def accumulate(iterable, key_func=lambda x:x, op=add):
+    '''Given an iterable, generate pairs of (running_total, item), where
+    running_total accumulates (with oper.add) the items.
+
+    If key_func is supplied, running_total instead accumulates the result of
+    calling key_func with the current item passed as an argument.
+
+    # get a running total along with the current item
+    >>> list(accumulate(range(7)))
+    [(0, 0), (1, 1), (3, 2), (6, 3), (10, 4), (15, 5), (21, 6), (28, 7)]
+
+    # generate chunks of a string given chunk sizes
+    >>> s = 'abcdefghijklmn'
+    >>> chunksizes = [2,3,2,1,3]
+    >>> [s[pos-l:pos] for pos, l in accumulate(chunksizes)]
+    ['ab', 'cde', 'fg', 'h', 'ijk']
+
+    '''
+    total = None
+    for i in iterable:
+        if total is None:
+            total = key_func(i)
+        else:
+            total = op(total, key_func(i))
+        yield total, i
+
+def periodically(iterable, callback, every=1, total=None):
     """Periodically call a callback function while iterating.
 
     Useful for e.g. displaying progress information.
