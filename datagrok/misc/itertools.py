@@ -8,9 +8,9 @@ Many of these have been taken from or inspired by the documentation for the
 builtin itertools module. See http://docs.python.org/library/itertools.html
 
 These have been removed:
-    any(seq, pred=bool) - Unnecessary; use any((pred(x) for x in seq))
-    iall(seq, pred=bool) - Unnecessary; use all((pred(x) for x in seq))
-    no(seq, pred=bool) - Unnecessary; use not any((pred(x) for x in seq))
+    any(seq, pred=bool) - Unnecessary; use any(pred(x) for x in seq)
+    iall(seq, pred=bool) - Unnecessary; use all(pred(x) for x in seq)
+    no(seq, pred=bool) - Unnecessary; use not any(pred(x) for x in seq)
 
 """
 
