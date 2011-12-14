@@ -47,3 +47,13 @@ def memoized(fn):
         return results[args]
     _memoized_fn.__doc__ = fn.__doc__.replace('Returns', 'A memoization of', 1)
     return _memoized_fn
+
+def hbar(pct, width=80, chars=[
+        u'', u'\u258f', u'\u258e', u'\u258d', u'\u258c', u'\u258b', u'\u258a',
+        u'\u2589', u'\u2588']):
+    '''Returns a string of unicode "Block Elements" characters appropriate for
+    drawing a single bar in a horizontal bar chart.
+    '''
+    nchars = pct * width
+    remainder = nchars - int(nchars)
+    return chars[8] * int(nchars) + chars[int(remainder*8)]

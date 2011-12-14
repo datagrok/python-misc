@@ -17,7 +17,10 @@ These have been removed:
 from __future__ import absolute_import
 from itertools import islice, imap, count
 from operator import add
+import sys
 import collections
+import time
+import datetime
 
 # For employing "yield" for a similar purpose as "print"
 def withnewlines(iterable):
@@ -126,6 +129,61 @@ def periodically(iterable, callback, every=1, total=None):
         yield item
         if n % every == 0 or (total and n == total):
             callback(n, total, item)
+
+def progress(iterable,
+        writer=lambda s: sys.stderr.write('%s\n' % s),
+        every=1,
+        total=None,
+        templates=(
+            '{current:4d}/{total} items processed ({percent:7.2%}) ETA: {eta:%c}',
+            '{current:4d} items processed in {elapsed:6.2f}s',
+            )):
+    '''
+    calls writer periodically with a populated template while processing an
+    iterable. Useful for reporting progress through the iterable.
+
+    templates is a 2-tuple of string templates. The first will be used if total
+    is available, otherwise the second.
+
+    .format() is called on templates with arguments:
+
+    current - the number of items yielded
+    total - the total number of items
+    percent - the ratio of items processed to total items (float)
+    started - the datetime the first item was processed.
+    elapsed - the time elapsed, as a floating point number of seconds.
+    remaining - a guess about the number of seconds remaining to finish
+        processing based on the elapsed time and number of items processed.
+
+    '''
+    started_ts = time.time()
+    started = datetime.datetime.fromtimestamp(started_ts)
+
+    def stats(current, total):
+        elapsed = time.time() - started_ts
+        percent = None
+        remaining = None
+        if total:
+            percent = float(current) / total
+            remaining = elapsed/percent - elapsed
+            eta = datetime.datetime.fromtimestamp(started_ts + elapsed/percent)
+        return {
+                'current': current,
+                'total': total,
+                'started': started,
+                'elapsed': elapsed,
+                'percent': percent,
+                'remaining': remaining,
+                'eta': eta,
+                }
+
+    callback = (
+            lambda c, t, i: writer(templates[0].format(**stats(c, t))),
+            lambda c, t, i: writer(templates[1].format(**stats(c, t)))
+            )
+
+    return periodically(iterable, callback, every, total)
+
 
 # Verbatim from itertools docs. http://docs.python.org/library/itertools.html
 
