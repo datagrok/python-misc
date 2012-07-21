@@ -12,17 +12,17 @@ See http://en.wikipedia.org/wiki/Collatz_conjecture
 '''
 
 def collatz(x):
-	'''Return the next number in the Collatz sequence.'''
-	if (x % 2) == 0:
-		return x/2
-	else:
-		return x*3+1
+    '''Return the next number in the Collatz sequence.'''
+    if (x % 2) == 0:
+        return x/2
+    else:
+        return x*3+1
 
 
 def collatz_seq(x):
-	'''Return the Collatz sequence for x, iterating until 1
-	is reached.'''
-	while x != 1:
-		yield x
-		x = collatz(x)
-	yield x
+    '''Return the Collatz sequence for x, iterating until 1
+    is reached.'''
+    while x != 1:
+        yield x
+        x = collatz(x)
+    yield x

@@ -46,31 +46,31 @@ Branches:
 
 As of today, `master` still contains some buggy code. To clean up:
 
-	git checkout master
-	git rm -f buggyfile
-	git commit
-	git checkout dev
-	git merge -s ours --no-commit master
-	git diff
-	git commit
+    git checkout master
+    git rm -f buggyfile
+    git commit
+    git checkout dev
+    git merge -s ours --no-commit master
+    git diff
+    git commit
 
 Bugfixing should occur in a topic branch from master (or directly in master if I'm lazy and cavalier) wherever possible. Then merge topic to master, then master to dev.
 
-	git checkout master
-	git branch -d bugfix
-	git checkout -b bugfix
-	(fix bugs)
-	git commit
-	git checkout master
-	git merge bugfix
-	git checkout dev
-	git merge master
+    git checkout master
+    git branch -d bugfix
+    git checkout -b bugfix
+    (fix bugs)
+    git commit
+    git checkout master
+    git merge bugfix
+    git checkout dev
+    git merge master
 
 When a new module or feature from dev becomes stable, cherry-pick or patch it into an integration branch from master, then merge to master, then merge master to dev.
 
-	git checkout master
-	git checkout -b integration
-	git cherry-pick 
+    git checkout master
+    git checkout -b integration
+    git cherry-pick 
 
 # TODO
 
