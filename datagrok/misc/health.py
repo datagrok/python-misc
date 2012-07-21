@@ -1,8 +1,8 @@
-'''Various utilities for health and fitness.
+"""Various utilities for health and fitness.
 
 Some data from http://www.runnersworld.com/article/0,7120,s6-242-304-311-8402-0,00.html
 
-'''
+"""
 
 # harris-benedict factor: coefficent of bmr, estimates daily calorie burn
 hbf = {
@@ -30,21 +30,21 @@ tcbfactor_walking = .53
 
 
 def targetheartrate(age):
-    '''Returns a tuple of target heart rates:
+    """Returns a tuple of target heart rates:
         (low, high, max)
     
-    '''
+    """
     mhr = 220 - int(age)
     return (int(mhr * .50), int(mhr * .85), mhr)
 
 
 def karvonen_heartrate(age, rhr):
-    '''Returns a tuple of heart rates given age and resting heart rate (rhr)
+    """Returns a tuple of heart rates given age and resting heart rate (rhr)
     based on the Karvonen equation:
 
         (resting, fat burn, cardio, maximum)
  
-    '''
+    """
     mhr = 206.9 - (0.67 * age)
     hrrange = mhr - rhr
     return (
@@ -62,7 +62,7 @@ def bmr(male, age, wt, ht, metric=False,
             (True, True): (66, 13.7, 5, 6.8),
             (False, True): (655, 9.6, 1.8, 4.7),
         }):
-    '''Calculate basal metabolic rate.
+    """Calculate basal metabolic rate.
 
     male - True or False
     age - age in years
@@ -73,7 +73,7 @@ def bmr(male, age, wt, ht, metric=False,
         wt - weight in kg
         ht - height in cm
 
-    '''
+    """
     (c, w, h, a) = _coeffs[(male, bool(metric))]
     return c + w*wt + h*ht - a*age
 
@@ -83,7 +83,7 @@ def bmi(wt, ht, metric=False,
             True: 703,
             False: 1,
         }):
-    '''Calculate the body mass index.
+    """Calculate the body mass index.
     
     if english is True or omitted:
         wt - weight in pounds
@@ -91,7 +91,8 @@ def bmi(wt, ht, metric=False,
     if english is False:
         wt - weight in kg
         ht - height in meters
-    '''
+
+    """
     return wt / ht / ht * _coeffs[bool(metric)]
 
 

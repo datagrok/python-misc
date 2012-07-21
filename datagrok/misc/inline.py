@@ -14,7 +14,7 @@
 
 # Distributed under the GPL
 
-'''In-line Python code processor
+"""In-line Python code processor
 
 Allows one to embed Python code in otherwise plain-text documents like HTML.
 Anything between the tokens:
@@ -32,13 +32,13 @@ or:
 
     open('output.html', 'w').write(inline(open('file_to_parse.pyhtml')).read())
 
-'''
+"""
 from __future__ import absolute_import
 import sys
 import StringIO
 
 def inline(fpin, fpout=None, locals_={}):
-    '''Expands in-line python code in an otherwise textual document.
+    """Expands in-line python code in an otherwise textual document.
     
     fpin:
         input filehandle.
@@ -49,7 +49,7 @@ def inline(fpin, fpout=None, locals_={}):
 
     Returns fpout.
 
-    '''
+    """
     real_sys_stdout = sys.stdout
     if fpout is None:
         fpout = StringIO.StringIO()

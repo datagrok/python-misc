@@ -45,7 +45,7 @@ featureful as this hack and upgrade to it.
 #         47      White
 
 class AnsiColor(object):
-    '''An object which wraps text in ANSI terminal color codes.
+    """An object which wraps text in ANSI terminal color codes.
 
     >>> words = ['ERROR:', 'attempting to fix problem...', 'fixed.']
 
@@ -64,7 +64,7 @@ class AnsiColor(object):
     >>> pattern = '{0:red/bold} {1} {2:reset/bg_green/black}'
     >>> print pattern.format(*(AnsiColor(x) for x in words))
     \x1b[31;1mERROR:\x1b[m attempting to fix problem... \x1b[0;42;30mfixed.\x1b[m
-    '''
+    """
 
     # TODO: split accessor-based and format()-based api into two different
     # classes.

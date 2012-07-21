@@ -1,4 +1,4 @@
-'''Helpers for the standard library 'doctest' module.
+"""Helpers for the standard library 'doctest' module.
 
     Warning: this module overlaps the name of a module in the Python standard
     library. If you're a sensible and pragmatic developer who obeys the
@@ -24,13 +24,13 @@ This module allows me to:
     # directory.
     python -m datagrok.misc.doctest
 
-'''
+"""
 from __future__ import absolute_import
 import doctest
 import pkgutil
 
 # TODO: enable the other use cases below:
-'''
+"""
     # Test a module by filename
     python -m datagrok.misc.doctest datagrok/misc/email.py
 
@@ -44,12 +44,12 @@ import pkgutil
     # directory.
     python -m datagrok.misc.doctest datagrok/misc
 
-'''
+"""
 def test_modules():
-    '''Recursively searches for modules and packages starting in current
+    """Recursively searches for modules and packages starting in current
     directory, testing each.
     
-    '''
+    """
 
     # TODO: pile all testable modules into a DocTestRunner instead of running
     # several (or only one) test. (Basically duplicate doctest.testmod() but

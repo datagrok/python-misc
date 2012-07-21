@@ -1,4 +1,4 @@
-'''Small hacks for printing debugging messages.
+"""Small hacks for printing debugging messages.
 
 Python has a built-in __debug__ flag. It is usually set to 'true.' It is false
 when run as python -O. Running as python -O also disables assertions.
@@ -7,7 +7,7 @@ I'm trying to take advantage of this feature in all my code. This lets me:
 
     - Bulk up on assertions that sanity-check function arguments for proper
       type, etc.
-    
+
     - Leave debugging messages in code and let the __debug__ flag turn them
       off.
 
@@ -22,7 +22,7 @@ If you wish to call a particular function only when debugging:
 
     assert myfunc()
 
-'''
+"""
 from __future__ import absolute_import
 
 # TODO: I can't put doctests here because they will be wrong depending on the
@@ -61,26 +61,26 @@ else:
 
 
 debug.__doc__ = (
-    '''Prints msg to standard error only when python is launched without -O.
-    ''')
+    """Prints msg to standard error only when python is launched without -O.
+    """)
 
 d_apply.__doc__ = (
-    '''Deprecated. Calls fn with any additional arguments as parameters, but
+    """Deprecated. Calls fn with any additional arguments as parameters, but
     only when python is launched without -O. Also prints a note stating that
     the call is taking place.
 
     n.b. I don't remember for what purpose I created this, but I now feel it is
     redundant; one may simply use assert blah() instead.
 
-    ''')
+    """)
 
 printcalls.__doc__ = (
-    '''A decorator that prints a note to standard error when its decorated
+    """A decorator that prints a note to standard error when its decorated
     function is called, but only when __debug__ is true.
 
     For a more robust solution, see 'trace' in the standard library.
 
-    ''')
+    """)
 
 def pdb_on_exception():
     import sys

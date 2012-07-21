@@ -1,4 +1,4 @@
-'''Flatten an arbitrarily nested iterable structure down to a single iterable.
+"""Flatten an arbitrarily nested iterable structure down to a single iterable.
 
 >>> list(flatten([1, 2, [3, 4, [5, 6], 7], 8]))
 [1, 2, 3, 4, 5, 6, 7, 8]
@@ -80,7 +80,7 @@ sys.stdout for the duration of the initial call, capturing the printed output to
 a StringIO buffer or something. But for whatever reason, I don't want to do
 that.
 
-'''
+"""
 from __future__ import absolute_import
 from __future__ import generators
 
@@ -111,9 +111,9 @@ def flatten_fastdictdef(iterable, get_iterbility=None):
                 yield subelem
 
 def flatten_fastdictdef_callfuncs(iterable, get_iterbility=None):
-    '''A modification of Francis Avila's
+    """A modification of Francis Avila's
     flatten_fastdictdef() which also calls functions, for
-    lazy expansion.'''
+    lazy expansion."""
     if get_iterbility is None:
         get_iterbility = {''.__class__:False, u''.__class__:False}
     while callable(iterable):

@@ -1,10 +1,10 @@
-'''An idea for a Python DSL for lazily constructing SQL queries.
+"""An idea for a Python DSL for lazily constructing SQL queries.
 
     >>> e = CriteriaHaving()
     >>> print (e.kind == 'person') * (e.id > 100) * (e.id < 1000) * (e.color != 'blue')
     (((table_a.kind = 'person') and (table_a.id > 100)) and (table_a.id < 1000)) and (table_a.color != 'blue')
 
-'''
+"""
 
 # TODO: There are several very nice ORMs out there that may have solved this
 # problem already. Investigate and cull if so.

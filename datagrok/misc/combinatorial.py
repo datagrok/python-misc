@@ -1,4 +1,4 @@
-'''Utilities for higher-order function composition.
+"""Utilities for higher-order function composition.
 
 Originally from _Text Processing in Python_, 'combinatorial.py'
 by David Mertz
@@ -24,7 +24,7 @@ The following have been removed:
     either - use any() instead.
     anyof3 - use any() instead.
 
-'''
+"""
 from __future__ import absolute_import
 from functools import reduce
 
@@ -33,7 +33,7 @@ from functools import reduce
 
 # combinatorial style for some builtins
 def each(*fns):
-    '''Compose a list of functions into a single function that returns the list
+    """Compose a list of functions into a single function that returns the list
     of results when its arguments are applied to every function.
 
     >>> many_increments = each(*[
@@ -44,17 +44,17 @@ def each(*fns):
     >>> list(many_increments(4))
     [5, 6, 7]
 
-    '''
+    """
     return lambda *args: (fn(*args) for fn in fns)
 
 
 def any(*fns):
-    '''Return a function that returns True if any of fns are True when evaluated.'''
+    """Return a function that returns True if any of fns are True when evaluated."""
     return lambda *args: __builtins__.any(each(fns)(*args))
 
 
 def all(*fns):
-    '''Return a function that returns True if all of fns are True when evaluated.'''
+    """Return a function that returns True if all of fns are True when evaluated."""
     return lambda *args: __builtins__.all(each(fns)(*args))
 
 # Compose two functions.
@@ -62,13 +62,13 @@ _compose = lambda f, g: lambda *args: f(g(*args))
 
 # The identity function.
 def ident(x):
-    '''The identity function. ident(x) == x.'''
+    """The identity function. ident(x) == x."""
     return x
 
 # from http://mail.python.org/pipermail/python-list/2004-December/298060.html
 
 def compose(*callables):
-    '''Compose a sequence of functions.
+    """Compose a sequence of functions.
     
     compose(f,g,h)(x) == f(g(h(x)))
 
@@ -77,19 +77,19 @@ def compose(*callables):
     >>> compose(*[incrementer, doubler])(3)
     7
     
-    '''
+    """
     return reduce(_compose, callables, ident)
 
 
 def pipeline(*callables):
-    '''Compose a sequence of functions in reverse order. Allows one to
+    """Compose a sequence of functions in reverse order. Allows one to
     visualise the sequence as a pipeline, like when using the unix shell
     "pipe."
     
     pipeline(f,g,h)(x) == h(g(f(x)))
     (Think: "echo x | f | g | h")
     
-    '''
+    """
     callables = list(callables)
     callables.reverse()
     return compose(*callables)

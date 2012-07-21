@@ -1,4 +1,4 @@
-'''Utilities for templating.
+"""Utilities for templating.
 
 TemplateStringHelper is a wrapper object that adapts objects for use with
 python's format strings and template strings, for doing simple template
@@ -136,13 +136,13 @@ searched in the order that they are presented.
     here is a string from a_dict
     another string from second dict
 
-'''
+"""
 from __future__ import absolute_import
 from collections import Mapping
 
 
 class TemplateStringHelper(Mapping):
-    '''A wrapper object which provides dict-style access to some objects'
+    """A wrapper object which provides dict-style access to some objects'
     attributes and methods.
 
     This is designed to wrap arbitrary objects to make them easy to use with
@@ -150,16 +150,16 @@ class TemplateStringHelper(Mapping):
 
     See the module-level docstring for examples of use.
 
-    '''
+    """
 
     def __init__(self, *objects, **kw):
-        '''Wrap objects with a TemplateStringHelper.
+        """Wrap objects with a TemplateStringHelper.
         
         If replace_missing=True is given as a keyword argument, then any
         requests for missing keys will return '%(key)s'. Otherwise, KeyError
         will be raised.
 
-        '''
+        """
         self.obs = objects
         self.replace_missing = kw.get('replace_missing', False)
 
@@ -219,10 +219,10 @@ class TemplateStringHelper(Mapping):
         return item
 
     def __getitem_ob(self, key, ob):
-        '''Helper for __getitem__. Attempts to retrieve value for key from ob,
+        """Helper for __getitem__. Attempts to retrieve value for key from ob,
         trying both subscript and attribute access.
         
-        '''
+        """
         try:
             return ob[key]
         except (TypeError, KeyError):

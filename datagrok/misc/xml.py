@@ -1,4 +1,4 @@
-'''Utilities for working with XML.
+"""Utilities for working with XML.
 
     Warning: this module overlaps the name of a module in the Python standard
     library. If you're a sensible and pragmatic developer who obeys the
@@ -18,12 +18,12 @@ I think it would be appropriate to silently spam out an email to the W3C on
 your behalf telling them where to stick their committee-based designs. Maybe in
 the next version...
 
-'''
+"""
 from __future__ import absolute_import
 import xml.dom.minidom
 
 def builder(tree):
-    '''Converts a tree structure constructed from intrinsic types (tuples,
+    """Converts a tree structure constructed from intrinsic types (tuples,
     dicts, lists) to an xml.dom.minidom tree.
     
     Each node in the input tree is a tuple or a string. Strings become DOM text
@@ -38,7 +38,7 @@ def builder(tree):
         - attrs(dict):    the string keys and string values representing the element attributes
         - children(list): a list of nodes in this same format.
 
-    '''
+    """
 
     d = (xml.dom.minidom
          .getDOMImplementation()
@@ -47,7 +47,7 @@ def builder(tree):
 
 
 def _builder(doc, node, attrs, children):
-    '''Recursive helper to builder'''
+    """Recursive helper to builder"""
     for key in attrs or []:
         node.setAttribute(key, attrs[key])
     for child in children or []:

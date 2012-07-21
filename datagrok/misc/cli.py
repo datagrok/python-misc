@@ -1,4 +1,4 @@
-'''Framework for creating tools that employ a robust command-line interface.'''
+"""Framework for creating tools that employ a robust command-line interface."""
 
 from __future__ import absolute_import
 import os
@@ -7,12 +7,12 @@ import shutil
 # TODO: interface to datagrok.ansicolor ?
 
 class CLIManager(object):
-    '''Captures the boilerplate involved in making a decent command-line
+    """Captures the boilerplate involved in making a decent command-line
     interface for a multi-function script.
-    
+
     Think about the interface to cvs, svn, git, etc.
 
-    Example: 
+    Example:
         class MyApp(CLIManager):
             def cmd_who(self):
                 "Tells who"
@@ -28,8 +28,8 @@ class CLIManager(object):
             App = MyApp(sys.argv.pop(0))
             # Call the instance with command line arguments
             App(*sys.argv)
-            
-    '''
+
+    """
     def __init__(self, argv0):
         self.argv0 = os.path.basename(argv0)
 
@@ -51,7 +51,7 @@ class CLIManager(object):
         return error
 
     def cmd_help(self, *args):
-        '''Prints the usage information for this program or a command'''
+        """Prints the usage information for this program or a command"""
         if len(args) == 0:
             print "usage: %s COMMAND [ARGS]" % self.argv0
             print

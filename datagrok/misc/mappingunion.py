@@ -1,4 +1,4 @@
-'''A unioned view of multiple wrapped mapping objects.'''
+"""A unioned view of multiple wrapped mapping objects."""
 
 from __future__ import absolute_import
 from UserDict import DictMixin
@@ -12,7 +12,7 @@ from UserDict import DictMixin
 # collections.MutableMapping instead of DictMixin."
 
 class MappingUnion(DictMixin):
-    '''A mapping object which presents a unioned view of multiple other mapping
+    """A mapping object which presents a unioned view of multiple other mapping
     objects.
 
     To oversimplify, one might say that a MappingUnion is to a sequence of
@@ -23,7 +23,7 @@ class MappingUnion(DictMixin):
     together. So, I have a dict mapping paths to content objects, a dict-like
     object mapping date-like paths to content retrieved from a database, etc.
 
-    '''
+    """
 
     dicts = []
 

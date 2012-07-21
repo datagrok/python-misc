@@ -1,4 +1,4 @@
-'''Miscellaneous Python scripts and utilities
+"""Miscellaneous Python scripts and utilities
 
 These are little code snippets I like to keep handy. Some are copied or
 modified from other people or books, some are original by me.
@@ -25,7 +25,7 @@ may be incomplete, even as little as unfinished stubs of ideas.
 Michael F. Lamb <mike@datagrok.org>
 http://datagrok.org
 
-'''
+"""
 from __future__ import absolute_import
 
 __author__ = 'Michael F. Lamb <mike@datagrok.org>'
@@ -34,11 +34,11 @@ __date__ = '2005-04-07 07:59:18 -0400'
 
 
 def memoized(fn):
-    '''A memoizing decorator.
+    """A memoizing decorator.
     
     Note: Python 3.2 includes a possibly more robust 'functools.lrucache'.
 
-    '''
+    """
     # TODO: create my own 'functools' and move this there?
     results = {}
     def _memoized_fn(*args):

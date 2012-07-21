@@ -1,17 +1,17 @@
-'''Tools for working with python packages and modules.
+"""Tools for working with python packages and modules.
 
     Warning: this module overlaps the name of a module in the Python standard
     library. If you're a sensible and pragmatic developer who obeys the
     recommendations in the Python documentation, you may wish to rename this
     module before use.
 
-'''
+"""
 
 from __future__ import absolute_import
 import sys
 
 class system_imports_only():
-    '''Sometimes, I want to create packages or modules named something like
+    """Sometimes, I want to create packages or modules named something like
     'datagrok.misc.email' that complement the 'email' module in the Python
     standard library.
 
@@ -46,12 +46,12 @@ class system_imports_only():
     packaging and distribution. It assumes that your stdlib-overlapping module
     does not live within /usr/lib as the python standard library does.
     
-    '''
+    """
 
     # TODO: finish carefully diagnosing and testing example failure cases and
     # how this class solves them.
 
-    '''
+    """
     Problem:
 
         Current directory contains 'A.py' and a module wants to 'import A' from
@@ -62,7 +62,7 @@ class system_imports_only():
         Standard library contains module 'A' and module 'B' that does 'import
         A'.  'email.py'
         imports 'smtplib'.
-    '''
+    """
 
     def __enter__(self):
         self.private_lib_path = []
@@ -78,10 +78,10 @@ with system_imports_only():
 
 
 def get_modules():
-    '''In progress. A wrapper around pkgutil.walk_packages to find packages and
+    """In progress. A wrapper around pkgutil.walk_packages to find packages and
     modules and return their name and first line of docstring.
     
-    '''
+    """
     for module_loader, name, ispkg in pkgutil.walk_packages(['.']):
         imploader = module_loader.find_module(name)
         try:

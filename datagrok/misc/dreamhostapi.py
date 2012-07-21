@@ -1,4 +1,4 @@
-'''Talk to the Dreamhost API with xmlrpclib.
+"""Talk to the Dreamhost API with xmlrpclib.
 
 This is a bit of a hack to work around some subtle conflicts between
 Dreamhost's API and assumptions made by the xmlrpclib library. Specifically,
@@ -7,7 +7,7 @@ names. (xmlrpclib translates python method names to method names.)
 
 Dreamhost API: http://wiki.dreamhost.com/Application_programming_interface
 
-'''
+"""
 from __future__ import absolute_import
 from xmlrpclib import ServerProxy, _Method
 from uuid import uuid1
@@ -53,14 +53,14 @@ class DreamHostServerProxy(ServerProxy):
 
 
 def set_dynamic_ip(dh_api_key, hostname):
-    '''Uses the Dreamhost API to configure a DNS A record that points to the
+    """Uses the Dreamhost API to configure a DNS A record that points to the
     user's IP address. Useful for setting up a "phone home" dns name.
 
     This script is intended to be executed on the Dreamhost server by a user
     manually connecting using SSH. This lets us find the IP address to use by
     examining the SSH_CLIENT environment variable.
 
-    '''
+    """
 
     new_ip = environ['SSH_CLIENT'].split()[0]
     server = DreamHostServerProxy(dh_api_key)

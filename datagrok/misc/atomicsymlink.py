@@ -1,11 +1,11 @@
-'''Change the destination of a symlink as an atomic operation.'''
+"""Change the destination of a symlink as an atomic operation."""
 
 from __future__ import absolute_import
 import os
 
 
 def symlink(src, dst, tmp=None):
-    '''Create a symbolic link pointing to src named dst.
+    """Create a symbolic link pointing to src named dst.
     
     This function does the same thing as os.symlink, except when dst is an
     existing symlink. In this case, the new symlink is created in a temporary
@@ -26,7 +26,7 @@ def symlink(src, dst, tmp=None):
     to be triggered by an active local attacker. To make it shut up, specify
     your own transient filename to be used for the swap as the argument tmp.
     
-    '''
+    """
     if not os.path.islink(dst):
         return os.symlink(src, dst)
     if not tmp:

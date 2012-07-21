@@ -1,4 +1,4 @@
-'''Mixin that auto-populates instance attributes.
+"""Mixin that auto-populates instance attributes.
 
     >>> class Foo(AutoInitialize):
     ...     pass
@@ -33,16 +33,16 @@
         ...
     TypeError: 'Blah' does not take 'd' as an argument.
 
-'''
+"""
 from __future__ import absolute_import
 import sys
 
 
 class AutoInitialize(object):
-    '''This mixin auto-populates its instance attributes based on the arguments
+    """This mixin auto-populates its instance attributes based on the arguments
     passed to its constructor.
     
-    '''
+    """
     def __init__(self, **kw):
         self.__dict__.update(locals())
         del self.__dict__['self']
@@ -50,11 +50,11 @@ class AutoInitialize(object):
 
 
 class AutoInitializeSlots(object):
-    '''This mixin auto-populates its instance attribute slots based on the
+    """This mixin auto-populates its instance attribute slots based on the
     arguments passed to its constructor. Argument keys must match __slots__
     attribute.
     
-    '''
+    """
     __slots__ = []
     def __init__(self, *args, **kw):
         if len(args) > len(self.__slots__):

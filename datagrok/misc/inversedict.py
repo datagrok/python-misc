@@ -1,4 +1,4 @@
-'''Invert dictionaries. (keys->values and values->keys)
+"""Invert dictionaries. (keys->values and values->keys)
 
     >>> d = {
     ...     'a': 1,
@@ -36,7 +36,7 @@ We also run into an issue when values are mutable and thus not suitable for use
 as dictionary keys. I have not yet implemented a way to deal with this
 gracefully.
 
-'''
+"""
 
 # TODO: instead of multiple functions, add a toggle argument (or even a
 # injective dictionary detection heuristic) which will cause inverseDict to
@@ -49,7 +49,7 @@ gracefully.
 # that contains mutable values.
 
 def inverseDict(d):
-    '''Thinking of dict d as a function that maps a -> b, this function produces
+    """Thinking of dict d as a function that maps a -> b, this function produces
     a new dict that maps b -> a.
     
     We deal with non-injective dicts by mapping multi-valued elements to a list
@@ -64,14 +64,14 @@ def inverseDict(d):
     >>> inverseDict(d)
     {1: ['a'], 2: ['b'], 3: ['c']}
 
-    '''
+    """
     d_ = {}
     for k, v in d.items():
         d_.setdefault(v, []).append(k)
     return d_
 
 def inverseInjectiveDict(d):
-    '''
+    """
 
     >>> d = {
     ...     'a': 1,
@@ -82,5 +82,5 @@ def inverseInjectiveDict(d):
     {1: 'a', 2: 'b', 3: 'c'}
 
 
-    '''
+    """
     return dict([(v,k) for (k,v) in d.items()])
