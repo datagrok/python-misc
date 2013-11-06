@@ -46,6 +46,7 @@ def memoized(fn):
             results[args] = fn(*args)
         return results[args]
     _memoized_fn.__doc__ = fn.__doc__.replace('Returns', 'A memoization of', 1)
+    _memoized_fn.__memo__ = results
     return _memoized_fn
 
 def hbar(pct, width=80, chars=[
