@@ -53,5 +53,10 @@ If there's something here you really like, let me know, and I'll be motivated to
 - Better unit testing, or at least an automated testrunner so we know what the test coverage is, and what's probably not broken
 - Find a way to automatically present pydocs nicely, and automatically. No, not Sphinx, I hate that mess. Explore [method used in dinoboff's github-tools][1].
 
+# License
+
+Everything I do is [AGPLv3][], or any later version. If you need something more corporate-friendly, contact me and I'll consider it.
+
 [1]: http://dinoboff.github.com/github-tools/overview.html#documentation-hosting
 [2]: http://www.kernel.org/pub/software/scm/git/docs/gitworkflows.html
+[AGPLv3]: http://www.gnu.org/licenses/agpl.html
