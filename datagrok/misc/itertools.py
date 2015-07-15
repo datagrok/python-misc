@@ -15,7 +15,7 @@ These have been removed:
 """
 
 from __future__ import absolute_import
-from itertools import islice, imap, count
+from itertools import islice, imap, count, izip_longest
 from operator import add
 import sys
 import collections
@@ -183,6 +183,24 @@ def progress(iterable,
             )
 
     return periodically(iterable, callback, every, total)
+
+
+def groupsof(xs, n=1, fill=None):
+    """Generate iterables of length n, whose elements come from the
+    iterable xs. Effectively, this clusters the data series xs into
+    n-length "groups."
+
+    If xs runs out of elements before the end of the last group, the
+    remainder is padded with the argument provided to fill.
+
+    xs is only consumed in the same order that elements from the
+    generated groups are, so be careful of the order you call them.
+
+    >>> list(groupsof(range(11), n=3, fill='filler'))
+    [(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 'filler')]
+
+    """
+    return izip_longest(*[iter(xs)]*n, fillvalue=fill)
 
 
 # Verbatim from itertools docs. http://docs.python.org/library/itertools.html
