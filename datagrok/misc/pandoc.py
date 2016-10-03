@@ -23,10 +23,10 @@ def pandoc(txt,
 
     s = subprocess.Popen(
         ['pandoc',
-         '-f', 'markdown',
+         '-f', 'markdown+simple_tables',
          '-t', 'html',
          '-H', '/home/mike/etc/emailstyle.css',
-         #'-S',
+         '-S',
          '-s',
         ],
         stdin=subprocess.PIPE,
