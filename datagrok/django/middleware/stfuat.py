@@ -1,3 +1,25 @@
+"""Middleware hack to silence missing variable debug messages.
+
+    Copyright 2016 Michael F. Lamb (http://datagrok.org)
+
+    This program and the files distributed with it are free software: you
+    can redistribute them and/or modify them under the terms of the GNU
+    Affero General Public License as published by the Free Software
+    Foundation, either version 3 of the License, or (at your option) any
+    later version.
+
+    These files are distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Affero General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+"""
+__author__ = 'Michael F. Lamb (http://datagrok.org)'
+__license__ = 'GNU AGPL-3.0+'
+
 class STFUAdminIsPopupMiddleware(object):
     """Silence complaints about is_popup variable in admin templates.
 
