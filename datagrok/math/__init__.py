@@ -29,3 +29,15 @@ def ran(r1, r2):
 
     """
     return lin((r1[0],r2[0]),(r1[1],r2[1]))
+
+
+def ncr(n, r):
+    """Return the number of combinations without replacement of size r
+    chosen from among n items."""
+
+    from operator import mul
+    from math import factorial
+    from functools import reduce
+    r = min(r, n-r)
+    if r == 0: return 1
+    return reduce(mul, range(n, n-r, -1)) // factorial(r)
