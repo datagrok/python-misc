@@ -1,22 +1,6 @@
+"""'SubMappingResolverMixin' and more mapping container experiments."""
+
 import collections
-
-class HierarchicalMapping(HierarchcalMappingMixin, dict):
-    '''A HierarchicalMapping is a mapping whose keys form a tree-like
-    hierarchy. Keys may have parent and child keys and there is always a single
-    root key.
-
-    The data format for keys depends on various mixins.
-    
-    '''
-    pass
-
-class PathTransformerMixin(HierarchicalMappingMixin):
-    '''Abstract superclass for all mixins that perform some preliminary
-    translation of paths used when accessing this HierarchicalMapping.
-    
-    '''
-    def transform_path(self, path):
-        return path
 
 class HierarchicalMappingMixin(object):
     '''
@@ -39,6 +23,24 @@ class HierarchicalMappingMixin(object):
 
     def ancestors(self, path):
         return (path[:n] for n in range(len(path)))
+
+class HierarchicalMapping(HierarchicalMappingMixin, dict):
+    '''A HierarchicalMapping is a mapping whose keys form a tree-like
+    hierarchy. Keys may have parent and child keys and there is always a single
+    root key.
+
+    The data format for keys depends on various mixins.
+    
+    '''
+    pass
+
+class PathTransformerMixin(HierarchicalMappingMixin):
+    '''Abstract superclass for all mixins that perform some preliminary
+    translation of paths used when accessing this HierarchicalMapping.
+    
+    '''
+    def transform_path(self, path):
+        return path
 
 class SlashSeparatedMappingMixin(PathTransformerMixin, HierarchicalMappingMixin, dict):
     '''
