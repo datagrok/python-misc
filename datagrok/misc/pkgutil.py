@@ -104,6 +104,8 @@ def standard_library_names():
 def module_list():
     stdlibnames = list(standard_library_names())
     for name, doc in get_modules():
+        if not doc or doc.startswith('Could not import:'):
+            continue
         name = name.split('.')
         basename = name.pop()
         conflict = basename in stdlibnames
