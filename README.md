@@ -55,9 +55,9 @@ If there's something here you really like, let me know, and I'll be motivated to
 
 # License
 
-All of the code herein is copyright 2015 [Michael F. Lamb][] and released under the terms of the [GNU Affero General Public License, version 3][AGPL], or, at your option, any later version. 
+All of the code herein is copyright 2016 [Michael F. Lamb][] and released under the terms of the [GNU Affero General Public License, version 3][AGPL-3.0+] (or, at your option, any later version.)
 
 [1]: http://dinoboff.github.com/github-tools/overview.html#documentation-hosting
 [2]: http://www.kernel.org/pub/software/scm/git/docs/gitworkflows.html
-[AGPL]: http://www.gnu.org/licenses/agpl.html
+[AGPL-3.0+]: http://www.gnu.org/licenses/agpl.html
 [Michael F. Lamb]: http://datagrok.org
