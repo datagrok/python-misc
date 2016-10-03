@@ -1,5 +1,3 @@
-# based on http://tirl.org/blogs/media-lab-blog/50/
-
 from django.contrib.markup.templatetags import markup
 from django import template
 register = template.Library()
